@@ -1,0 +1,1 @@
+<h1>An error occurred with the kanban</h1>

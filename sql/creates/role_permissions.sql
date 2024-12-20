@@ -1,0 +1,15 @@
+CREATE TABLE IF NOT EXISTS role (
+    id SERIAL PRIMARY KEY,
+    label VARCHAR(31) UNIQUE NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS permission (
+    id SERIAL PRIMARY KEY,
+    label VARCHAR(31) UNIQUE NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS role_permission (
+    role_id INT NOT NULL REFERENCES role (id) ON DELETE CASCADE,
+    permission_id INT NOT NULL REFERENCES permission (id) ON DELETE CASCADE,
+    PRIMARY KEY (role_id, permission_id)
+);

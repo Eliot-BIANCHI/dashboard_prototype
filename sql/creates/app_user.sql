@@ -1,0 +1,15 @@
+CREATE TABLE IF NOT EXISTS app_user (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(63) NOT NULL,
+    first_name VARCHAR(31) NOT NULL,
+    last_name VARCHAR(31) NOT NULL,
+    image_url VARCHAR(67),
+    role_id INT NOT NULL REFERENCES role (id),
+    created_at DATE NOT NULL DEFAULT CURRENT_DATE
+);
+
+CREATE TABLE IF NOT EXISTS session (
+    id TEXT NOT NULL PRIMARY KEY,
+    user_id INTEGER NOT NULL REFERENCES app_user (id) ON DELETE CASCADE,
+    expires_at TIMESTAMPTZ NOT NULL
+);
